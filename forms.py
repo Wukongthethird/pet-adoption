@@ -9,7 +9,8 @@ class AddPetForm(FlaskForm):
     """Form for adding pets, accepts name, species, photo_url, age, notes, available"""
 
     name = StringField( "Pet Name", validators=[InputRequired()])
-    species = StringField( "Species", validators=[InputRequired()])
+    # add species choices
+    species = SelectField( "Species", choices = [ ('dog' , 'Dog' )  ,  ('cat', 'Cat'  ), ( 'porcupine', 'Porcupine')  ], validators=[InputRequired()])
     photo_url = StringField("Photo URL", validators=[Optional(), URL()])
     age = SelectField( 'Age Group',
                         choices = [ ('Baby' , 'Baby' )  ,  ('Young', 'Young'  ), ( 'Adult', 'Adult') , ('Senior' , 'Senior' )     ],

@@ -9,8 +9,13 @@
 {% block content %}
 <ul>
   {% for pet in pets %}
-
-  <li><a href = '/{{pet.id}}' > {{pet.name}} </a> <img src="{{pet.photo_url}}" /> {{pet.available}}</li>
+  <!-- Fix pet availability-->
+  <li>
+    <a href="/{{pet.id}}"> {{pet.name}} </a>
+    <img src="{{pet.photo_url}}" /> {% if pet.available %} Available {% endif %}
+    <!-- If pet is not available-->
+    {% if not pet.available %} Not available {% endif %}
+  </li>
   {% endfor %}
 </ul>
 <a href="/add">Add Pet</a>
