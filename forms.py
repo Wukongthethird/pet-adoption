@@ -18,3 +18,11 @@ class AddPetForm(FlaskForm):
     notes = StringField( 'Notes', validators=[Optional()] )
     available = BooleanField( 'Availability')
 
+class EditPetForm(FlaskForm):
+    """Form for adding pets"""
+    photo_url = StringField("Photo URL", validators=[Optional(), URL()])
+    
+    notes = StringField( 'Notes', validators=[Optional()] )
+
+    available = BooleanField( 'Availability')
+
