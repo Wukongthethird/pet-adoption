@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<!-- Home page title-->
+{% block title %} Adopt
+<!-- title-->
+{% endblock %}
+
+<!-- Body content-->
+{% block content %}
+<ul>
+  {% for pet in pets %}
+  <li>{{pet.name}} <img src="{{pet.photo_url}}" />{{pet.available}}</li>
+  {% endfor %}
+</ul>
+<a href="/add">Add Pet</a>
+{% endblock %}

@@ -23,7 +23,7 @@ class Pet(db.Model):
 
     id = db.Column( 
                     db.Integer,
-                    Primary_Key=True, 
+                    primary_key=True, 
                     nullable = False, 
                     autoincrement = True
                     )
@@ -39,7 +39,7 @@ class Pet(db.Model):
                     nullable = False
                         )
 
-    photo_url = db.Columnn(
+    photo_url = db.Column(
                     db.Text,
                     nullable = False,
                     default = ''
@@ -47,16 +47,15 @@ class Pet(db.Model):
 
     age = db.Column(
                     db.Text, 
-                    nullable = False,
-                        # .in_([ 'Baby' , 'Young', 'Adult', 'Senior' ])
-
+                    nullable = False
+                    # .in_([ 'Baby' , 'Young', 'Adult', 'Senior' ])
                      )
 
-    notes = db.column(
+    notes = db.Column(
                     db.Text
                     )
     
-    available =  db.column(
+    available =  db.Column(
                         db.Boolean ,
                         nullable = False,
                         default = True
