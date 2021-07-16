@@ -48,7 +48,7 @@ class Pet(db.Model):
     age = db.Column(
                     db.Text, 
                     nullable = False
-                    # .in_([ 'Baby' , 'Young', 'Adult', 'Senior' ])
+                        # see if we can add required in schema
                      )
 
     notes = db.Column(

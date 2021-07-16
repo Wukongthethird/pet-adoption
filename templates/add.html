@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+<!-- Home page title-->
+{% block title %} Add A Pet
+<!-- title-->
+{% endblock %}
+
+<!-- Body content-->
+
+<form action= "/add" id="pet-add-form"  method="POST">
+    {{ form.hidden_tag() }} <!-- add type = hidden form fields-->
+
+    {% for field in form 
+        if field.widget.input_type != 'hidden' %}
+
+    <p>
+            {{field.label}}
+            {{ field }}
+
+            {{% for error in field.errors %}}
+                {{error}}
+
+            {{% end for %}}
+    </p>
+
+    {{% endfor %}}
+    <button type= "submit">ADD</button>
+
+</form>
+
+{% endblock %}
