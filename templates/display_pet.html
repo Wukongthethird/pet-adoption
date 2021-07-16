@@ -7,20 +7,25 @@
 
 <!-- Body content-->
 {% block content %}
-
-<form action="/add" id="pet-add-form" method="POST">
+<ul>
+  <li>{{pet.name}}</li>
+  <li><img src="{{pet.photo_url}}" alt="No picture" /></li>
+  <li>{{pet.age}}</li>
+  <li>{{pet.species}}</li>
+</ul>
+<form action="/{{pet.id}}" method="POST">
   {{ form.hidden_tag() }}
   <!-- add type = hidden form fields-->
 
-  {% for field in form if field.widget.input_type != 'hidden' %}
+  {% for field in form if field.widget.input_type != 'hidden' OR field.label IN
+  ('photo_url', 'notes', 'available') ('%}
 
   <p>
     {{field.label}} {{ field }} {% for error in field.errors %} {{error}} {%
     endfor %}
   </p>
-
-  {% endfor %}
-  <button type="submit">ADD</button>
 </form>
+
+<button type="submit">ADD</button>
 
 {% endblock %}

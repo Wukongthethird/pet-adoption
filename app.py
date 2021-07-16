@@ -8,7 +8,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from models import db, connect_db, Pet
 
-from forms import  AddPetForm
+from forms import AddPetForm
 
 app = Flask(__name__)
 
@@ -46,9 +46,12 @@ def add_pet_page():
         notes = form.notes.data
         available = form.available.data
 
-        
+        new_pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes, available=available)
 
-        return redirect( "/add" )
+        db.session.add(new_pet)
+        db.session.commit()
+
+        return redirect( "/" )
 
     else:
         return render_template( 'add.html', form=form )
