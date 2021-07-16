@@ -17,7 +17,8 @@ def connect_db(app):
 
 
 class Pet(db.Model):
-    """Pet """
+    """Pet class to create table with columns id, name, species,
+     photo_url, age, notes and available"""
 
     __tablename__ = "pets"
 
@@ -31,7 +32,6 @@ class Pet(db.Model):
     name = db.Column(
                     db.Text,
                     nullable = False
-
                     )
 
     species = db.Column(
@@ -48,7 +48,6 @@ class Pet(db.Model):
     age = db.Column(
                     db.Text, 
                     nullable = False
-                        # see if we can add required in schema
                      )
 
     notes = db.Column(

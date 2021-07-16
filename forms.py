@@ -6,7 +6,7 @@ from wtforms.validators import InputRequired, Optional, Email, URL, Required
 
 
 class AddPetForm(FlaskForm):
-    """Form for adding pets"""
+    """Form for adding pets, accepts name, species, photo_url, age, notes, available"""
 
     name = StringField( "Pet Name", validators=[InputRequired()])
     species = StringField( "Species", validators=[InputRequired()])
@@ -19,7 +19,7 @@ class AddPetForm(FlaskForm):
     available = BooleanField( 'Availability')
 
 class EditPetForm(FlaskForm):
-    """Form for adding pets"""
+    """Form for editing pet photo_url, notes and availability"""
     photo_url = StringField("Photo URL", validators=[Optional(), URL()])
     
     notes = StringField( 'Notes', validators=[Optional()] )

@@ -28,13 +28,15 @@ db.create_all()
 toolbar = DebugToolbarExtension(app)
 
 @app.route('/')
-def home_page():
+def show_home_page():
+    """Shows the home page that includes a list of all pets"""
     pets = Pet.query.all()
 
     return render_template('home.html', pets=pets)
 
 @app.route('/add', methods = ['GET','POST'])
-def add_pet_page():
+def show_add_pet_page():
+    """Shows the form for adding a new pet"""
     
     form = AddPetForm()
 
@@ -59,9 +61,11 @@ def add_pet_page():
 
 
 @app.route('/<int:pet_id>', methods=['GET','POST'])
-def display_edit_pet(pet_id):
+def display_pet_details(pet_id):
+    """Display pet details and edit form for pet availability,
+     notes and photo"""
 
-    pet = Pet.query.get(pet_id)
+    pet = Pet.query.get_or_404(pet_id)
     form = EditPetForm( obj=pet )
  
     if form.validate_on_submit():
